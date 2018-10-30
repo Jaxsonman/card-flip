@@ -4,7 +4,7 @@ import store from './storeReducer';
 
 
 const rootReducer = combineReducers({
-  state
+  store
 });
 
 export default rootReducer;
