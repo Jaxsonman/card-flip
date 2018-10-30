@@ -1,40 +1,24 @@
 import {
     SET_STICKERS
-}   from './types';
-
-function fetchStickers() {
-    const stickers = [
-        {
-            _id: 0,
-            category: 'JavaScript',
-            remaining: 4,
-            imageUrl: 'https://via.placeholder.com/80x80'
-          },
-          {
-            _id: 1,
-            category: 'Python',
-            remaining: 2,
-            imageUrl: 'https://via.placeholder.com/80x80'
-      
-          },
-          {
-            _id: 2,
-            category: 'Ruby',
-            remaining: 6,
-            imageUrl: 'https://via.placeholder.com/80x80'
-      
-          }
-    ]
-
-    const response = {
-        data: { stickers }
+ } from './types';
+ 
+ import axios from 'axios';
+ 
+ function fetchStickers() {
+    return function(dispatch) {
+        axios.get('http://localhost:8080/api/store')
+        .then(response => {
+            dispatch({
+                type: SET_STICKERS,
+                payload: response.data.stickers
+            })
+        })
+        .catch(arr => {
+            if(err) { console.log(err) }
+        })
+ 
     }
-
-    return ({
-        type: SET_STICKERS,
-        payload: response.data.stickers
-    })
-}
-
-
-export { fetchStickers }
+ 
+ }
+ 
+ export { fetchStickers }
