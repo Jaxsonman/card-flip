@@ -2,6 +2,13 @@ const express = require('express');
 const port = process.env.PORT || 8080;
 const app = express();
 
+const cors = require('cors');
+
+const options = {
+  origin: 'http://localhost:3000'
+}
+
+app.use(cors(options));
 // app.use(express.static(__dirname + '/dist/'));
 // app.get(/.*/, function (req, res) {
 //   res.sendFile(__dirname + '/dist/index.html');

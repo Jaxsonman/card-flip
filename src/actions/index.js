@@ -13,7 +13,7 @@ import {
                 payload: response.data.stickers
             })
         })
-        .catch(arr => {
+        .catch(err => {
             if(err) { console.log(err) }
         })
  
